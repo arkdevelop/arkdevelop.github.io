@@ -82,9 +82,11 @@ Center for Internet Security. (n.d.). *CIS Docker Benchmarks*. https://www.cisec
 
 Docker. (n.d.-a). *Best Practices for Writing Dockerfiles*. https://docs.docker.com/develop/develop-images/dockerfile_best-practices/.
 
-Docker (n.d.-b). *Build Images with BuildKit*. https://docs.docker.com/develop/develop-images/build_enhancements/.
+Docker. (n.d.-b). *Build Images with BuildKit*. https://docs.docker.com/develop/develop-images/build_enhancements/.
 
 Gartmann, D. (2018, July 10). *Quick Wins to Secure your Docker Containers*. https://www.equalexperts.com/blog/tech-focus/quick-wins-to-secure-your-docker-containers/.
+
+GoogleContainerTools. (2020, July 28). *GitHub Repository*. https://github.com/GoogleContainerTools/distroless/blob/main/examples/nodejs/Dockerfile.
 
 GoogleContainerTools. (2020, July 28). *GitHub Repository*. https://github.com/GoogleContainerTools/distroless/blob/main/examples/nodejs/Dockerfile.
 
