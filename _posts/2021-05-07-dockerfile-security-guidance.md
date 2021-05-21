@@ -78,18 +78,16 @@ CMD ["app.js"]
 * Avoid using the latest tag on images as it could break the application later
 
 # References
-Center for Internet Security. (n.d.). *CIS Docker Benchmarks*. https://www.cisecurity.org/benchmark/docker/.
+Center for Internet Security. (n.d.). *CIS Docker Benchmarks*. <https://www.cisecurity.org/benchmark/docker/>.
 
-Docker. (n.d.-a). *Best Practices for Writing Dockerfiles*. https://docs.docker.com/develop/develop-images/dockerfile_best-practices/.
+Docker. (n.d.-a). *Best Practices for Writing Dockerfiles*. <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>.
 
-Docker. (n.d.-b). *Build Images with BuildKit*. https://docs.docker.com/develop/develop-images/build_enhancements/.
+Docker. (n.d.-b). *Build Images with BuildKit*. <https://docs.docker.com/develop/develop-images/build_enhancements/>.
 
-Gartmann, D. (2018, July 10). *Quick Wins to Secure your Docker Containers*. https://www.equalexperts.com/blog/tech-focus/quick-wins-to-secure-your-docker-containers/.
+Gartmann, D. (2018, July 10). *Quick Wins to Secure your Docker Containers*. <https://www.equalexperts.com/blog/tech-focus/quick-wins-to-secure-your-docker-containers/>.
 
-GoogleContainerTools. (2020, July 28). *GitHub Repository*. https://github.com/GoogleContainerTools/distroless/blob/main/examples/nodejs/Dockerfile.
+GoogleContainerTools. (2020, July 28). *GitHub Repository*. <https://github.com/GoogleContainerTools/distroless/blob/main/examples/nodejs/Dockerfile>.
 
-GoogleContainerTools. (2020, July 28). *GitHub Repository*. https://github.com/GoogleContainerTools/distroless/blob/main/examples/nodejs/Dockerfile.
+Iradier, A. (2021, March 9). *Top 20 Dockerfile Best Practices*. <https://sysdig.com/blog/docker-file-best-practices/>.
 
-Iradier, A. (2021, March 9). *Top 20 Dockerfile Best Practices*. https://sysdig.com/blog/docker-file-best-practices/.
-
-Nodejs. (2020, November 2). *Docker and Node.js Best Practices*. https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md.
+Nodejs. (2020, November 2). *Docker and Node.js Best Practices*. <https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md>.
