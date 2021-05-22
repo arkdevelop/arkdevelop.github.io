@@ -47,6 +47,32 @@ EXPOSE 80/tcp
 ## 1.3. Use Trusted Base Images
 * Base images should come from a trusted source, be signed (e.g. Docker Content Trust), and vulnerability scanned.
 
+```powershell
+PS user> docker scan node:14
+\ Analyzing container dependencies for node:14
+\ Querying vulnerabilities database...
+
+...
+
+Package manager:   deb
+Project name:      docker-image|node
+Docker image:      node:14
+Platform:          linux/amd64
+
+Tested 413 dependencies for known vulnerabilities, found 548 vulnerabilities.
+```
+
+```powershell
+PS user> docker trust inspect --pretty node:14
+
+No signatures for node:14
+
+Administrative keys for node:14
+
+  Repository Key:       d3a0845e6d36c6c058ae6d2bc718b32ead4b51f2a6fa81b341ba2df72f1823c9
+  Root Key:     be46625d7c6a0afe24bbbce6a92114d691e32ae921cf14f3feb2f970e7a77337
+```
+
 ## 1.4. Use a Linter
 A linter is a tool which statically analyzes content to flag programming errors, bugs, style errors, and more to assist in preventing undesirable outcomes. [Hadolint](https://github.com/hadolint/hadolint) is a commonly recommended Dockerfile linter which can aid in ensuring the user's Dockerfile follows best-practices, like confirming the user has explicitly tagged a version for their base image. It is therefore recommended that a linter is used while writing a Dockerfile whenever possible.
 
@@ -87,6 +113,10 @@ Center for Internet Security. (n.d.). *CIS Docker Benchmarks*. <https://www.cise
 Docker. (n.d.-a). *Best Practices for Writing Dockerfiles*. <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>.
 
 Docker. (n.d.-b). *Build Images with BuildKit*. <https://docs.docker.com/develop/develop-images/build_enhancements/>.
+
+Docker. (n.d.-c). *Content Trust in Docker* <https://docs.docker.com/engine/security/trust/>
+
+Docker. (n.d.-d). *Vulnerability Scanning for Docker Local Images* <https://docs.docker.com/engine/scan/>
 
 Gartmann, D. (2018, July 10). *Quick Wins to Secure your Docker Containers*. <https://www.equalexperts.com/blog/tech-focus/quick-wins-to-secure-your-docker-containers/>.
 
