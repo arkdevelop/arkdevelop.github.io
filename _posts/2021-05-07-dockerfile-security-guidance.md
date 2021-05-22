@@ -48,8 +48,11 @@ EXPOSE 80/tcp
 
 ## 1.4. Use a Linter
 A linter is a tool which statically analyzes content to flag programming errors, bugs, style errors, and more to assist in preventing undesirable outcomes. [Hadolint](#) is a commonly recommended Dockerfile linter which can aid in ensuring the user's Dockerfile follows best-practices like confirming the user has explicitly tagged a version for their base image. It is therefore recommended that a linter is used while writing a Dockerfile whenever possible.
+
 **Figure 1**
+
 *Hadolint example*
+
 ![Test Image](/me/assets/images/1280x720%20Placeholder.png)
 
 ## 1.5. Multi-stage Building
