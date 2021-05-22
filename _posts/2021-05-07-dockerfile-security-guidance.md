@@ -13,6 +13,7 @@ tags:
 
 This post will walk users through Dockerfile security best practices including but not limited to multi-stage builds, use of appropriate instructions, linting, and more.
 
+
 ---
 
 # 1. Guidance
