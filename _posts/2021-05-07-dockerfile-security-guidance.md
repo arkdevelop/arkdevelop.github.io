@@ -11,7 +11,7 @@ tags:
 - guidance
 ---
 
-This post will walk users through Dockerfile security best practices including but not limited to multi-stage builds, creating minimal images, use of appropriate instructions, linting, what to avoid, and more.
+This post walks users through what a Dockerfile is and how best to create one following security best practices including but not limited to multi-stage builds, creating minimal images, use of appropriate instructions, linting, what to avoid, and more.
 
 ---
 
@@ -89,7 +89,9 @@ Docker. (n.d.-b). *Build Images with BuildKit*. <https://docs.docker.com/develop
 
 Gartmann, D. (2018, July 10). *Quick Wins to Secure your Docker Containers*. <https://www.equalexperts.com/blog/tech-focus/quick-wins-to-secure-your-docker-containers/>.
 
-GoogleContainerTools. (2020, July 28). *GitHub Repository*. <https://github.com/GoogleContainerTools/distroless/blob/main/examples/nodejs/Dockerfile>.
+GoogleContainerTools. (2020, July 28). *GitHub Repository*. 
+
+<https://github.com/GoogleContainerTools/distroless/blob/main/examples/nodejs/Dockerfile>.
 
 Iradier, A. (2021, March 9). *Top 20 Dockerfile Best Practices*. <https://sysdig.com/blog/docker-file-best-practices/>.
 
