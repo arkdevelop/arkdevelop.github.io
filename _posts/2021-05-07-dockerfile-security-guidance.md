@@ -11,7 +11,7 @@ tags:
 - guidance
 ---
 
-This post walks users through what a Dockerfile is and how to create one following leading industry best practices including but not limited to multi-stage builds, creating minimal images, use of appropriate instructions to minimize number of layers, linting, what to avoid, and more.
+In this post, we'll walk users through what a Dockerfile is and how to create one following leading industry best practices including but not limited to multi-stage builds, creating minimal images, use of appropriate instructions to minimize number of layers, linting, what to avoid, and more.
 
 ---
 
@@ -27,6 +27,7 @@ If the built-in user is not required, it should be removed. Using the same Node.
 ```dockerfile
 # For debian based images use:
 RUN userdel -r node
+
 # For alpine based images use:
 RUN deluser --remove-home node
 ```
