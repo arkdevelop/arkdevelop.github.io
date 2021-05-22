@@ -11,7 +11,7 @@ tags:
 - guidance
 ---
 
-This post walks users through what a Dockerfile is and how best to create one following security best practices including but not limited to multi-stage builds, creating minimal images, use of appropriate instructions, linting, what to avoid, and more.
+This post walks users through what a Dockerfile is and how to create one following leading industry best practices including but not limited to multi-stage builds, creating minimal images, use of appropriate instructions to minimize number of layers, linting, what to avoid, and more.
 
 ---
 
@@ -33,8 +33,8 @@ RUN deluser --remove-home node
 
 ## 1.2. Use Minimal Dockerfile
 ### 1.2.1. Use Minimal Base Image
-Images should be minimal and only include the necessary packages to successfully run the application. In doing so, the attach surface will be significantly reduced by removing unnecessary and potentially vulnerable packages.
-Aiding developers in this effort, multiple sources have developed base images that only include the core necessities. [Distroless](#) and [Alpine](#) are two of the most common and recommended base images to use for creating minimal containers.
+Images should be minimal and only include the necessary packages to successfully run the application. In doing so, the attack surface will be significantly reduced through removing unnecessary and potentially vulnerable packages.
+Aiding developers in this effort, multiple sources have developed base images that only include the core necessities. [Distroless](https://github.com/GoogleContainerTools/distroless) and [Alpine](https://hub.docker.com/_/alpine) are two of the most common and recommended base images to use for creating minimal containers.
 
 ### 1.2.2. Use Minimal Ports
 In addition to using minimal images, only necessary ports should be exposed. Use of the EXPOSE instruction will assist in outlining for users which ports are intended to be published. However, it is important to note that the EXPOSE instruction is purely for comment and/or documentation purposes. Therefore, it will not prevent exposure of additional ports at runtime.
@@ -47,13 +47,13 @@ EXPOSE 80/tcp
 * Base images should come from a trusted source, be signed (e.g. Docker Content Trust), and vulnerability scanned.
 
 ## 1.4. Use a Linter
-A linter is a tool which statically analyzes content to flag programming errors, bugs, style errors, and more to assist in preventing undesirable outcomes. [Hadolint](#) is a commonly recommended Dockerfile linter which can aid in ensuring the user's Dockerfile follows best-practices like confirming the user has explicitly tagged a version for their base image. It is therefore recommended that a linter is used while writing a Dockerfile whenever possible.
+A linter is a tool which statically analyzes content to flag programming errors, bugs, style errors, and more to assist in preventing undesirable outcomes. [Hadolint](https://github.com/hadolint/hadolint) is a commonly recommended Dockerfile linter which can aid in ensuring the user's Dockerfile follows best-practices, like confirming the user has explicitly tagged a version for their base image. It is therefore recommended that a linter is used while writing a Dockerfile whenever possible.
 
 **Figure 1**
 
 *Hadolint example*
 
-![Test Image](/me/assets/images/1280x720%20Placeholder.png)
+![Test Image](/me/assets/images/hadolint_example.png)
 
 ## 1.5. Multi-stage Building
 ```dockerfile
