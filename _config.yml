@@ -4,14 +4,14 @@ markdown: kramdown
 # URL of the Site
 url: ''
 # Base URL of the Site (i.e., Name of the Repository in which the Site is hosted)
-baseurl: 
+baseurl: me
 
 # Title of the Site
 title: arkdevelopment
 # Description of the Site
 description: 
 # URL of Image of the Site
-site-image: /WhatATheme/assets/images/meta.jpg
+site-image: /me/assets/images/meta.jpg
 # Keywords of the Site
 site-keywords: Site, Template, Theme
 # URL for the Image of custom Favicon
@@ -35,10 +35,10 @@ dribbble_username:
 spotify_username:
 
 # Google Analytics
-google-analytics: UA-163806439-1
+google-analytics:
 
 # Disqus
-disqus-shortname: 
+disqus-shortname:
 
 # Name of the Author
 author-name: arkdevelopment
