@@ -11,13 +11,12 @@ tags:
 - guidance
 ---
 
-This post will walk users through Dockerfile security best practices including but not limited to multi-stage builds, use of appropriate instructions, linting, and more.
-
+This post will walk users through Dockerfile security best practices including but not limited to multi-stage builds, creating minimal images, use of appropriate instructions, linting, what to avoid, and more.
 
 ---
 
 # 1. Guidance
-## 1.1. User USER Instruction
+## 1.1. Use USER Instruction
 To ensure containers are not run as root, the USER instruction should be used whenever possible. Avoiding the use of root will assist in preventing host privilege escalation attacks which could be detrimental to the security of the system. To aid users with this task, some images include a built-in user. For example, Node.js includes their node user as seen below.
 
 ```dockerfile
