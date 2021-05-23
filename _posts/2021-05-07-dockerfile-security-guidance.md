@@ -45,7 +45,7 @@ EXPOSE 80/tcp
 ```
 
 ## 1.3. Use Trusted and Secure Base Images
-Docker images should come from a trusted source, be signed, and be vulnerability scanned to achieve an appropriate level of risk tolerance. While there are a number of tools available to obtain such results, the below will focus on what comes prepackaged with Docker itself.
+Docker images should come from a trusted source, be signed, and be vulnerability scanned to achieve an appropriate level of risk mitigation. While there are a number of tools available to obtain such results, the below will focus on what comes prepackaged with Docker itself.
 
 ### 1.3.1. Check for Vulnerabilities
 ```powershell
