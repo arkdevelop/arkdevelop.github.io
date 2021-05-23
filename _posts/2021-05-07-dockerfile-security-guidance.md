@@ -44,9 +44,10 @@ In addition to using minimal images, only necessary ports should be exposed. Use
 EXPOSE 80/tcp
 ```
 
-## 1.3. Use Trusted Base Images
-* Base images should come from a trusted source, be signed (e.g. Docker Content Trust), and vulnerability scanned.
+## 1.3. Use Trusted and Secure Base Images
+Docker images should come from a trusted source, be signed, and be vulnerability scanned to achieve an appropriate level of risk tolerance. While there are a number of tools available to obtain such results, the below will focus on what comes prepackaged with Docker itself.
 
+### 1.3.1. Check for Vulnerabilities
 ```powershell
 PS user> docker scan node:14
 \ Analyzing container dependencies for node:14
@@ -62,6 +63,22 @@ Platform:          linux/amd64
 Tested 413 dependencies for known vulnerabilities, found 548 vulnerabilities.
 ```
 
+### 1.3.2. Use Signed Images
+Docker images should be signed from a trusted source before use. One way to ensure only signed images are used is to enforce Docker Content Trust. On the client, it can be enforced on a per session basis through using the following command.
+```bash
+export DOCKER_CONTENT_TRUST=1
+```
+
+After Docker Content Trust has been set, if the client tries to pull an untrusted image, it will be presented with an error such as the following.
+
+```bash
+$ docker pull node:14
+No valid trust data for 14
+```
+
+To check already pulled images, Docker offers the docker trust inspect command as shown below.
+
+Checking for 
 ```powershell
 PS user> docker trust inspect --pretty node:14
 
