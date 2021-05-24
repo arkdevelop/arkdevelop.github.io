@@ -16,6 +16,7 @@ In this post, we'll walk users through what a Dockerfile is and how to create on
 ---
 
 # Table of Contents
+
 - [Table of Contents](#table-of-contents)
 - [1. Guidance](#1-guidance)
   - [1.1. Use USER Instruction](#11-use-user-instruction)
