@@ -134,7 +134,11 @@ A linter is a tool which statically analyzes content to flag programming errors,
 ![Test Image](/me/assets/images/hadolint_example.png)
 
 ## 1.5. Avoid Using Latest Tag
-* Avoid using the latest tag on images as it could break the application later
+As seen in section [1.4. Use a Linter](#14-use-a-linter), Hadolint recommends avoiding the use of the latest tag in Dockerfiles. Users should avoid using the latest tag due to the potential for breaking functionality or introducing unknowns into the environment in the future should the image update. Instead of using the latest tag, users should opt to specify an explicit release tag.
+
+```dockerfile
+FROM node:14
+```
 
 ## 1.6. Group RUN, COPY, and ADD Instructions
 * RUN, COPY, and ADD instructions should be grouped onto a single line whenever possible to reduce the number of container layers
@@ -156,7 +160,14 @@ CMD ["app.js"]
 ## 1.8. Avoid Including Secrets or Credentials
 
 ## 1.9. Use .dockerignore
-* Use a .dockerignore file to explicitly exclude undesirable files and directories from the build (e.g. Credential files, backups, etc.)
+A .dockerignore file is similar to a .gitignore by which developers can specify files or directories to exclude from the build context, therefore preventing it from being included in the final image. .dockerignore files are particularly useful for explicitly excluding sensitive files and directories like credential files, backups, logs, and more. The below example ensures that a .git folder, a logs folder, and all files ending with the .md extension except for the README.md file are excluded from the build context. See [Docker's .dockerignore documentation](https://docs.docker.com/engine/reference/builder/#dockerignore-file) for further information.
+
+```dockerignore
+.git
+logs
+*.md
+!README.md
+```
 
 # References
 Center for Internet Security. (n.d.). *CIS Docker Benchmarks*. <https://www.cisecurity.org/benchmark/docker/>.
