@@ -17,14 +17,17 @@ In this post, we'll walk users through what a Dockerfile is and how to create on
 
 # Table of Contents
 - [1. Guidance](#1-guidance)
+
     - [1.1. Use USER Instruction](#11-use-user-instruction)
 
     - [1.2. Use Minimal Dockerfile](#12-use-minimal-dockerfile)
+
         - [1.2.1. Use Minimal Base Image](#121-use-minimal-base-image)
 
         - [1.2.2. Use Minimal Ports](#122-use-minimal-ports)
 
     - [1.3. Use Trusted and Secure Base Images](#13-use-trusted-and-secure-base-images)
+
         - [1.3.1. Check for Vulnerabilities](#131-check-for-vulnerabilities)
 
         - [1.3.2. Use Signed Images](#132-use-signed-images)
