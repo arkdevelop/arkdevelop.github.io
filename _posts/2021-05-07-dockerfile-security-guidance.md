@@ -20,31 +20,31 @@ In this post, we'll walk users through what a Dockerfile is and how to create on
 
     - [1.1. Use USER Instruction](#11-use-user-instruction)
 
-[1.2. Use Minimal Dockerfile](#12-use-minimal-dockerfile)
+    - [1.2. Use Minimal Dockerfile](#12-use-minimal-dockerfile)
 
-[1.2.1. Use Minimal Base Image](#121-use-minimal-base-image)
+        - [1.2.1. Use Minimal Base Image](#121-use-minimal-base-image)
 
-[1.2.2. Use Minimal Ports](#122-use-minimal-ports)
+        - [1.2.2. Use Minimal Ports](#122-use-minimal-ports)
 
-[1.3. Use Trusted and Secure Base Images](#13-use-trusted-and-secure-base-images)
+    - [1.3. Use Trusted and Secure Base Images](#13-use-trusted-and-secure-base-images)
 
-[1.3.1. Check for Vulnerabilities](#131-check-for-vulnerabilities)
+        - [1.3.1. Check for Vulnerabilities](#131-check-for-vulnerabilities)
 
-[1.3.2. Use Signed Images](#132-use-signed-images)
+        - [1.3.2. Use Signed Images](#132-use-signed-images)
 
-[1.4. Use a Linter](#14-use-a-linter)
+    - [1.4. Use a Linter](#14-use-a-linter)
 
-[1.5. Multi-stage Building](#15-multi-stage-building)
+    - [1.5. Multi-stage Building](#15-multi-stage-building)
 
-[1.6. Avoid Including Secrets or Credentials](#16-avoid-including-secrets-or-credentials)
+    - [1.6. Avoid Including Secrets or Credentials](#16-avoid-including-secrets-or-credentials)
 
-[1.7. Use .dockerignore](#17-use-dockerignore)
+    - [1.7. Use .dockerignore](#17-use-dockerignore)
 
-[1.8. Group RUN, COPY, and ADD Instructions](#18-group-run-copy-and-add-instructions)
+    - [1.8. Group RUN, COPY, and ADD Instructions](#18-group-run-copy-and-add-instructions)
 
-[1.9. Avoid Using Latest Tag](#19-avoid-using-latest-tag)
+    - [1.9. Avoid Using Latest Tag](#19-avoid-using-latest-tag)
 
-[References](#references)
+- [References](#references)
 
 ---
 
