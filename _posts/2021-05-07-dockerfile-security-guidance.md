@@ -15,6 +15,26 @@ In this post, we'll walk users through what a Dockerfile is and how to create on
 
 ---
 
+# Table of Contents
+- [Table of Contents](#table-of-contents)
+- [1. Guidance](#1-guidance)
+  - [1.1. Use USER Instruction](#11-use-user-instruction)
+  - [1.2. Use Minimal Dockerfile](#12-use-minimal-dockerfile)
+    - [1.2.1. Use Minimal Base Image](#121-use-minimal-base-image)
+    - [1.2.2. Use Minimal Ports](#122-use-minimal-ports)
+  - [1.3. Use Trusted and Secure Base Images](#13-use-trusted-and-secure-base-images)
+    - [1.3.1. Check for Vulnerabilities](#131-check-for-vulnerabilities)
+    - [1.3.2. Use Signed Images](#132-use-signed-images)
+  - [1.4. Use a Linter](#14-use-a-linter)
+  - [1.5. Multi-stage Building](#15-multi-stage-building)
+  - [1.6. Avoid Including Secrets or Credentials](#16-avoid-including-secrets-or-credentials)
+  - [1.7. Use .dockerignore](#17-use-dockerignore)
+  - [1.8. Group RUN, COPY, and ADD Instructions](#18-group-run-copy-and-add-instructions)
+  - [1.9. Avoid Using Latest Tag](#19-avoid-using-latest-tag)
+- [References](#references)
+
+---
+
 # 1. Guidance
 ## 1.1. Use USER Instruction
 To ensure containers are not run as root, the USER instruction should be used whenever possible. Avoiding the use of root will assist in preventing host privilege escalation attacks which could be detrimental to the security of the system. To aid users with this task, some images include a built-in user. For example, Node.js includes their node user as seen below.
@@ -66,8 +86,9 @@ Tested 413 dependencies for known vulnerabilities, found 548 vulnerabilities.
 ### 1.3.2. Use Signed Images
 Docker images should be signed from a trusted source before use. One way to ensure only signed images are used is to enforce Docker Content Trust. On the client, it can be enforced on a per session basis through using the following command.
 ```bash
-export DOCKER_CONTENT_TRUST=1
+$ export DOCKER_CONTENT_TRUST=1
 ```
+
 
 After Docker Content Trust has been set, if the client tries to pull an untrusted image, it will be presented with an error such as the following.
 
@@ -76,9 +97,9 @@ $ docker pull node:14
 No valid trust data for 14
 ```
 
+
 To check already pulled images, Docker offers the docker trust inspect command as shown below.
 
-Checking for 
 ```powershell
 PS user> docker trust inspect --pretty node:14
 
