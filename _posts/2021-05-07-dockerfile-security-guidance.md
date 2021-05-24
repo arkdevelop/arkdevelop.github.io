@@ -34,15 +34,15 @@ In this post, we'll walk users through what a Dockerfile is and how to create on
 
     - [1.4. Use a Linter](#14-use-a-linter)
 
-    - [1.5. Multi-stage Building](#15-multi-stage-building)
+    - [1.5. Avoid Using Latest Tag](#15-avoid-using-latest-tag)
 
-    - [1.6. Avoid Including Secrets or Credentials](#16-avoid-including-secrets-or-credentials)
+    - [1.6. Group RUN, COPY, and ADD Instructions](#16-group-run-copy-and-add-instructions)
 
-    - [1.7. Use .dockerignore](#17-use-dockerignore)
+    - [1.7. Multi-stage Building](#17-multi-stage-building)
 
-    - [1.8. Group RUN, COPY, and ADD Instructions](#18-group-run-copy-and-add-instructions)
+    - [1.8. Avoid Including Secrets or Credentials](#18-avoid-including-secrets-or-credentials)
 
-    - [1.9. Avoid Using Latest Tag](#19-avoid-using-latest-tag)
+    - [1.9. Use .dockerignore](#19-use-dockerignore)
 
 - [References](#references)
 
@@ -133,7 +133,13 @@ A linter is a tool which statically analyzes content to flag programming errors,
 
 ![Test Image](/me/assets/images/hadolint_example.png)
 
-## 1.5. Multi-stage Building
+## 1.5. Avoid Using Latest Tag
+* Avoid using the latest tag on images as it could break the application later
+
+## 1.6. Group RUN, COPY, and ADD Instructions
+* RUN, COPY, and ADD instructions should be grouped onto a single line whenever possible to reduce the number of container layers
+
+## 1.7. Multi-stage Building
 ```dockerfile
 FROM node:10 as build-env
 COPY ./app
@@ -147,16 +153,10 @@ WORKDIR /app
 CMD ["app.js"]
 ```
 
-## 1.6. Avoid Including Secrets or Credentials
+## 1.8. Avoid Including Secrets or Credentials
 
-## 1.7. Use .dockerignore
+## 1.9. Use .dockerignore
 * Use a .dockerignore file to explicitly exclude undesirable files and directories from the build (e.g. Credential files, backups, etc.)
-
-## 1.8. Group RUN, COPY, and ADD Instructions
-* RUN, COPY, and ADD instructions should be grouped onto a single line whenever possible to reduce the number of container layers
-
-## 1.9. Avoid Using Latest Tag
-* Avoid using the latest tag on images as it could break the application later
 
 # References
 Center for Internet Security. (n.d.). *CIS Docker Benchmarks*. <https://www.cisecurity.org/benchmark/docker/>.
@@ -165,9 +165,9 @@ Docker. (n.d.-a). *Best Practices for Writing Dockerfiles*. <https://docs.docker
 
 Docker. (n.d.-b). *Build Images with BuildKit*. <https://docs.docker.com/develop/develop-images/build_enhancements/>.
 
-Docker. (n.d.-c). *Content Trust in Docker* <https://docs.docker.com/engine/security/trust/>
+Docker. (n.d.-c). *Content Trust in Docker* <https://docs.docker.com/engine/security/trust/>.
 
-Docker. (n.d.-d). *Vulnerability Scanning for Docker Local Images* <https://docs.docker.com/engine/scan/>
+Docker. (n.d.-d). *Vulnerability Scanning for Docker Local Images* <https://docs.docker.com/engine/scan/>.
 
 Gartmann, D. (2018, July 10). *Quick Wins to Secure your Docker Containers*. <https://www.equalexperts.com/blog/tech-focus/quick-wins-to-secure-your-docker-containers/>.
 
