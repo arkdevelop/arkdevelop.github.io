@@ -131,7 +131,7 @@ A linter is a tool which statically analyzes content to flag programming errors,
 
 *Hadolint example*
 
-![Test Image](/me/assets/images/hadolint_example.png)
+![Hadolint example](../assets/images/hadolint_example.png)
 
 ## 1.5. Avoid Using Latest Tag
 As seen in section [1.4. Use a Linter](#14-use-a-linter), Hadolint recommends avoiding the use of the latest tag in Dockerfiles. Users should avoid using the latest tag due to the potential for breaking functionality or introducing unknowns into the environment in the future should the image update. Instead of using the latest tag, users should opt to specify an explicit release tag.
@@ -157,7 +157,33 @@ WORKDIR /app
 CMD ["app.js"]
 ```
 
+Running the following will show information about the image, including how many layers exist and how the layer was created.
+
+```powershell
+docker history node:14
+```
+**Figure 2**
+
+*Docker history of Node:14*
+
+![Docker history of Node:14](../assets/images/docker_history_node_14.png)
+
 ## 1.8. Avoid Including Secrets or Credentials
+Docker uses layer caching which essentially means that all of the layers are still present in the final image. As seen in section [1.7. Multi-stage Building](#17-multi-stage-building), certain commands like docker history will show the layers present in an image and how they were built. This becomes especially concerning when it comes to using secrets or credentials in a Dockerfile since any user with access to the image will be able to see the contents. To overcome this security concern, it is paramount that users never include secrets or credentials in their Dockerfile whether written in plaintext in the Dockerfile directly, passed in as a file, or passed in as a build argument.
+
+Users should instead opt to use tooling like Docker BuildKit with the --secret command line option to pass in required secret information.
+
+For example, in the Dockerfile the user would access the secret through the RUN command as seen below.
+
+```dockerfile
+RUN --mount=type=secret,id=secret cat /run/secrets/secret
+```
+
+During the build, the secret would be passed in through the --secret flag.
+
+```powershell
+docker build --no-cache --progress=plain --secret id=secret,src=secret.txt .
+```
 
 ## 1.9. Use .dockerignore
 A .dockerignore file is similar to a .gitignore by which developers can specify files or directories to exclude from the build context, therefore preventing it from being included in the final image. .dockerignore files are particularly useful for explicitly excluding sensitive files and directories like credential files, backups, logs, and more. The below example ensures that a .git folder, a logs folder, and all files ending with the .md extension except for the README.md file are excluded from the build context. See [Docker's .dockerignore documentation](https://docs.docker.com/engine/reference/builder/#dockerignore-file) for further information.
