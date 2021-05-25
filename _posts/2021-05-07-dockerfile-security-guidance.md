@@ -170,9 +170,9 @@ docker history node:14
 ![Docker history of Node:14](../assets/images/docker_history_node_14.png)
 
 ## 1.8. Avoid Including Secrets or Credentials
-Docker uses layer caching which essentially means that all of the layers are still present in the final image. As seen in section [1.7. Multi-stage Building](#17-multi-stage-building), certain commands like docker history will show the layers present in an image and how they were built. This becomes especially concerning when it comes to using secrets or credentials in a Dockerfile since any user with access to the image will be able to see the contents. To overcome this security concern, it is paramount that users never include secrets or credentials in their Dockerfile whether written in plaintext in the Dockerfile directly, passed in as a file, or passed in as a build argument.
+Docker uses layer caching which essentially means that all of the layers are still present in the final image. As seen in section [1.7. Multi-stage Building](#17-multi-stage-building), certain commands like docker history will show the layers present in an image and how they were built. This becomes especially concerning when it comes to using secrets or credentials in a Dockerfile since any user with access to the image will be able to see the contents. To overcome the security concern, it is paramount that users never include secrets or credentials in their Dockerfile whether written in plaintext in the Dockerfile directly, passed in as a file, or passed in as a build argument.
 
-Users should instead opt to use tooling like Docker BuildKit with the --secret command line option to pass in required secret information.
+Users should instead opt to use tooling like [Docker BuildKit](https://docs.docker.com/develop/develop-images/build_enhancements/) with the --secret command line option to pass in required secret information.
 
 For example, in the Dockerfile the user would access the secret through the RUN command as seen below.
 
