@@ -162,6 +162,7 @@ Running the following will show information about the image, including how many 
 ```powershell
 docker history node:14
 ```
+
 **Figure 2**
 
 *Docker history of Node:14*
