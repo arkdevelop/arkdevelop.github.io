@@ -141,9 +141,13 @@ FROM node:14
 ```
 
 ## 1.6. Group RUN, COPY, and ADD Instructions
-* RUN, COPY, and ADD instructions should be grouped onto a single line whenever possible to reduce the number of container layers
+RUN, COPY, and ADD instructions in Dockerfiles each create a new layer when invoked. It is therefore a best practice to group these instructions onto a single line whenever possible to reduce the number of container layers.
 
 ## 1.7. Multi-stage Building
+Multi-stage building in Dockerfiles offers a way to make intermediate builds, otherwise known as stages. Stages allow users to copy the resulting build from a previous stage and use it in a subsequent stage. Use of multi-stage building will reduce the attack surface and potential vulnerabilities of a build by limiting the packages found in the final image.
+
+For example, a user may want to have a stage which utilizes build tools, but have no requirements for those build tools in the final image. Through multi-stage building, they would start a stage with the FROM "base_image" as "name_of_stage1" instruction, then copy the result from that stage in their next FROM stage using the COPY --from="name_of_stage1" instruction. See the following Dockerfile for an example using Node:10 as the build environment followed by Google's Distroless Node:10 for the final image.
+
 ```dockerfile
 FROM node:10 as build-env
 COPY ./app
@@ -157,7 +161,8 @@ WORKDIR /app
 CMD ["app.js"]
 ```
 
-Running the following will show information about the image, including how many layers exist and how the layer was created.
+## 1.8. Avoid Including Secrets or Credentials
+Docker uses layer caching which essentially means that all of the layers are still present in the final image. Certain commands like docker history will show the layers present in an image and how they were built. See Figure 2 below for an example using Node:14. 
 
 ```powershell
 docker history node:14
@@ -169,8 +174,7 @@ docker history node:14
 
 ![Docker history of Node:14](../assets/images/docker_history_node_14.png)
 
-## 1.8. Avoid Including Secrets or Credentials
-Docker uses layer caching which essentially means that all of the layers are still present in the final image. As seen in section [1.7. Multi-stage Building](#17-multi-stage-building), certain commands like docker history will show the layers present in an image and how they were built. This becomes especially concerning when it comes to using secrets or credentials in a Dockerfile since any user with access to the image will be able to see the contents. To overcome the security concern, it is paramount that users never include secrets or credentials in their Dockerfile whether written in plaintext in the Dockerfile directly, passed in as a file, or passed in as a build argument.
+This becomes especially concerning when it comes to using secrets or credentials in a Dockerfile since any user with access to the image will be able to see the contents. To overcome the security concern, it is paramount that users never include secrets or credentials in their Dockerfile whether written in plaintext in the Dockerfile directly, passed in as a file, or passed in as a build argument.
 
 Users should instead opt to use tooling like [Docker BuildKit](https://docs.docker.com/develop/develop-images/build_enhancements/) with the --secret command line option to pass in required secret information.
 
