@@ -18,7 +18,6 @@ site-keywords: Site, Template, Theme
 favicon-url: 
 
 # URL of the Image of Custom Hero Image (i.e., the image in the background of the very first section of the Homepage)
-heroimage: ../me
 heroimage: /assets/main_background.jpeg
 
 # Social Media and Contact
