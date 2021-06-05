@@ -15,10 +15,10 @@ site-image: /me/assets/images/meta.jpg
 # Keywords of the Site
 site-keywords: Site, Template, Theme
 # URL for the Image of custom Favicon
-favicon-url: 
+favicon-url: /assets/images/favicon.ico
 
 # URL of the Image of Custom Hero Image (i.e., the image in the background of the very first section of the Homepage)
-heroimage: https://raw.githubusercontent.com/arkdevelop/me/main/assets/images/main_background.jpeg
+heroimage: /assets/images/main_background.jpeg
 
 # Social Media and Contact
 # If you don't want to use any icon, you can leave them blank.
