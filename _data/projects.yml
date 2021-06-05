@@ -1,5 +1,5 @@
 - name: vCard Application
-  image: https://cdn.pixabay.com/photo/2015/01/08/18/27/startup-593341_960_720.jpg
+  image: /me/assets/images/vcard.jpeg
   link: https://github.com/arkdevelop/vCard-Application
   description: RESTful application combining a parsing API back-end written in C with a front-end Node.js and Express.js web server.
 - name: Single Page Bootstrap Template
