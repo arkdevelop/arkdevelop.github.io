@@ -12,11 +12,21 @@
                     <br>
                     <div class="container columns is-centered">
                         <div>
-                            <a href="{{site.url}}{{site.baseurl}}/#contact"
-                                class="button is-rounded is-uppercase has-text-weight-normal is-black is-outlined">Contact
+                            <a href="#"
+                                class="button is-rounded is-uppercase has-text-weight-normal is-black is-outlined" id="contactBtn">Contact
                                 Me</a>
                             </a>
                         </div>
+                        <!-- The Modal -->
+                        <div id="contactModal" class="modal">
+
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <p>No contact information currently available.</p>
+                            </div>
+                        </div>
+                        <!-- End Modal -->
                         <div>
                             <a href="{{site.url}}{{site.baseurl}}/blog"
                                 class="button is-rounded is-uppercase has-text-weight-normal is-black is-outlined">Blog</a>
