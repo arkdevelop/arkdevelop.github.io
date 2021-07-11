@@ -22,7 +22,7 @@ heroimage: /assets/images/main_background.jpeg
 
 # Social Media and Contact
 # If you don't want to use any icon, you can leave them blank.
-email: 
+email: deepdivesec@outlook.com
 facebook_username: 
 twitter_username: 
 instagram_username: 
@@ -58,7 +58,6 @@ sass:
 plugins:
   - jekyll-admin
   - jekyll-feed
-  - jekyll-seo-tag
 
 # Permalink
 permalink: "blog/:title"
