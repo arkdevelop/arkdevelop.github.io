@@ -1,20 +1,20 @@
 - name: vCard Application
-  image: /me/assets/images/vcard.jpeg
+  image: /assets/images/vcard.jpeg
   link: https://github.com/arkdevelop/vCard-Application
   description: RESTful application combining a parsing API back-end written in C with a front-end Node.js and Express.js web server.
 - name: Single Page Bootstrap Template
-  image: /me/assets/images/single_page_bootstrap.jpeg
+  image: /assets/images/single_page_bootstrap.jpeg
   link: https://github.com/arkdevelop/Single-Page-Bootstrap-Template
   description: Responsive single-page layout using HTML5, CSS3, and Bootstrap 4
 - name: Checksum Tool
-  image: /me/assets/images/checksum_tool.jpeg
+  image: /assets/images/checksum_tool.jpeg
   link: https://github.com/arkdevelop/ChecksumTool
   description: Tool written using Python and Kivy to calculate hashes of files for checksum comparison
 - name: Coding Questions
-  image: /me/assets/images/coding_questions.jpeg
+  image: /assets/images/coding_questions.jpeg
   link: https://github.com/arkdevelop/Coding-Questions
   description: Repository containing coding answers for various coding interview questions
 - name: University Database
-  image: /me/assets/images/postgresql.jpeg
+  image: /assets/images/postgresql.jpeg
   link: https://github.com/arkdevelop/University-Database
   description: Repository containing various SQL files for a university database
