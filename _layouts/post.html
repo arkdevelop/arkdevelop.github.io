@@ -55,6 +55,69 @@ layout: compress
         <div class="content has-text-justified-desktop has-text-justified-fullhd has-text-justified has-text-justified-tablet has-text-left-mobile">
           <p>{{ content }}</p>
         </div>
+
+        <div class="columns is-centered is-multiline is-mobile">
+          {% assign showRelatedPosts = 3 %}
+
+          {% capture posts %} 
+          {% for post in site.posts %}
+            {% if post.url != page.url %}
+              {% assign matchingTags = "" | split: ","  %}
+    
+              {% for tag in post.tags %}
+                {% assign currentPostTag = tag | downcase %}
+                {% assign tagsPage = page.tags | downcase %}
+                {% if tagsPage contains currentPostTag %}
+                  {% assign matchingTags = matchingTags | push: currentPostTag %}    
+                {% endif %}
+              {% endfor %}
+            
+              {% assign tagsTotal = matchingTags.size %}
+    
+              {% if tagsTotal < 10 %}
+                {% assign tagsTotal = tagsTotal | prepend: "0" %}
+              {% else %}
+                {% assign tagsTotal = tagsTotal  %}
+              {% endif %}
+            
+            |
+            <!--<strong>{{ tagsTotal }} tags</strong>-->
+            <div class="column has-text-centered is-paddingless is-marginless is-one-third-widescreen is-one-third-desktop is-one-fifth-fullhd is-one-third-tablet is-two-fifths-mobile is-three-quarters-touch"
+            id="project-card">
+              <a href="{{ site.baseurl }}{{ post.url }}" target="_blank">
+              <div class="has-background-black card">
+                <img src="{{ post.post-image }}" 
+                    class="img-fluid" alt="{{ post.post-image }}" />
+                <div class="card-content">
+                  <h1 class="title has-text-white is-size-4">{{ post.title | truncate: 25}}</h1>
+                  <p class="has-text-white has-text-weight-light content">{{ post.description | truncate: 80}}</p>
+                </div>
+              </div>
+              </a>
+            </div>
+          {% endif %}
+          {% endfor %}
+          {% endcapture %}
+        </div>
+      {% assign relatedPosts = posts | split: '|' | sort | reverse %}
+
+      {% if relatedPosts.size > 1 %}
+        <div class="content has-text-justified-desktop has-text-justified-fullhd has-text-justified has-text-justified-tablet has-text-left-mobile">
+          <hr>
+          <h1>You Might Also Like...</h1>
+        </div>
+        
+        <section class="hero" id="project">
+          <div class="hero-body">
+              <div class="container has-text-centered">
+                  {% for i in (0..showRelatedPosts) %}
+                    {{ relatedPosts[i] }}
+                  {% endfor %}
+              </div>
+          </div>
+        </section>
+      {% endif %}
+
         {% unless site.disqus-shortname == "" %}
         <div class="content has-text-justified-desktop has-text-justified-fullhd has-text-justified has-text-justified-tablet has-text-left-mobile">
           <hr>

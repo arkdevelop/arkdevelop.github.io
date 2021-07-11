@@ -3,6 +3,7 @@ title: Dockerfile Security Best Practices
 layout: post
 post-image: "/assets/images/dockerfile-security-best-practices.jpg"
 description: A compilation of Dockerfile best practices and security guidance.
+category: Containers
 tags:
 - docker
 - dockerfile
