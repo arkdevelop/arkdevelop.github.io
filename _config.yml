@@ -7,13 +7,13 @@ url: 'https://deepdivesecurity.ca'
 baseurl: 
 
 # Title of the Site
-title: DeepDiveSecurity
+title: Deep Dive Security
 # Description of the Site
 description: 
 # URL of Image of the Site
 site-image: /assets/images/meta.jpg
 # Keywords of the Site
-site-keywords: Security, Guidance, Docker, Kubernetes, Cloud, AWS, GCP, Azure, Architecture
+site-keywords: Security, Best-practices, Guidance, Docker, Kubernetes, Cloud, AWS, GCP, Azure, Architecture
 # URL for the Image of custom Favicon
 favicon-url: /assets/images/favicon.ico
 
