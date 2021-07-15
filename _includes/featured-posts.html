@@ -1,0 +1,32 @@
+<section class="hero is-fullheight has-text-centered has-background-white-ter" id="featured-posts">
+    <div class="hero-body">
+        <div class="container">
+            <div class="content has-text-justified-desktop has-text-justified-fullhd has-text-justified has-text-justified-tablet has-text-left-mobile">
+                <h2>Featured Posts...</h2>
+            </div>
+            
+            <div class="columns">
+                <div class="columns is-centered is-multiline is-mobile">                  
+                  <section class="hero" id="project">
+                    <div class="hero-body">
+                        <div class="container has-text-centered">
+                            {% for post in site.posts limit:3 %}
+                                <div class="column has-text-centered is-paddingless is-marginless is-one-third-widescreen is-one-third-desktop is-one-fifth-fullhd is-one-third-tablet is-two-fifths-mobile is-three-quarters-touch"
+                                id="project-card">
+                                    <a href="{{ site.baseurl }}{{ post.url }}" target="_blank">
+                                    <div class="has-background-black card">
+                                        <img src="{{ post.post-image }}" class="img-fluid" alt="{{ post.post-image }}" />
+                                        <div class="card-content">
+                                            <h1 class="title has-text-white is-size-4">{{ post.title | truncate: 25}}</h1>
+                                            <p class="has-text-white has-text-weight-light content">{{ post.description | truncate: 80}}</p>
+                                        </div>
+                                    </div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                  </section>
+            </div>
+        </div>
+</section>
