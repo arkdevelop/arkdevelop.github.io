@@ -1,0 +1,103 @@
+---
+title: Blog
+layout: compress
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include head.html %}
+</head>
+
+<body>
+    {% include header.html %}
+    {% include search.html %}
+    <main>
+        <!-- Breadcrumb-area -->
+        <section class="breadcrumb-area grey-bg" style="background-image:url(/assets/img/bg/page-title.jpg)">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-8 col-md-6">
+                        <div class="breadcrumb-title sm-size">
+                            <h2>{{page.title}}{% if paginator %} - Page {{ paginator.page }}{% endif %}</h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 text-left text-md-right">
+                        <div class="breadcrumb">
+                            <ul>
+                                {% include breadcrumbs.html %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="basic-blog-area gray-bg pt-100 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 blog-post-items">
+                        {% for post in paginator.posts %}
+                        <div class="blog-wrapper mb-40">
+                            <div class="blog-thumb">
+                                <a href="{{ site.baseurl }}{{ post.url }}">
+                                    <img class="img-fluid" src="{{ post.post-image }}"
+                                        alt="{{ post.title }}" />
+                                </a>
+                            </div>
+                            <div class="meta-info">
+                                <ul>
+                                    <li class="posts-time">{{ post.date | date: '%B %d, %Y' }}</li>
+                                    <li>
+                                        {% assign words = post.content | number_of_words %}
+                                        {%- unless content.size == 0 -%}
+                                        <i class="fas fa-clock"></i> <b class="has-text-link">
+                                        {{ words | divided_by:180 }} min
+                                        </b>Read
+                                        {%- endunless -%}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="blog-content">
+                                <h2 class="blog-title">
+                                    <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+                                </h2>
+                                <p>{{ post.content | truncate: 250 | strip_html | strip_newlines | strip | escape }}</p>
+                            </div>
+                            <div class="link-box">
+                                <a href="{{ site.baseurl }}{{ post.url }}">Read More</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+        
+                        <!-- Pagination -->
+                        {% if paginator.total_pages > 1 %}
+                            <nav class="page-navigation pagination">
+                                <ul>
+                                {% if paginator.previous_page %}
+                                    <li class="page-item"><a class="page-link.enabled" href="{{ paginator.previous_page_path | relative_url }}">Prev</a></li>
+                                {% endif %}
+
+                                {% for page in (1..paginator.total_pages) %}
+                                    {% if page == paginator.page %}
+                                        <li class="page-item active"><a class="page-link.disabled">{{ page }}</a></li>
+                                    {% elsif page == 1 %}
+                                        <li class="page-item"><a class="page-link.enabled" href="{{ '/blog' | relative_url }}">{{ page }}</a></li>
+                                    {% else %}
+                                        <li class="page-item"><a class="page-link.enabled" href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                            
+                                {% if paginator.next_page %}
+                                    <li class="page-item"><a class="page-link.enabled" href="{{ paginator.next_page_path | relative_url }}">Next</a></li>
+                                {% endif %}
+                                </ul>
+                            </nav>
+                        {% endif %}
+            </div>
+            {% include blog-sidebar.html %}   
+     
+    </main>
+</body>
+
+{% include footer.html %}

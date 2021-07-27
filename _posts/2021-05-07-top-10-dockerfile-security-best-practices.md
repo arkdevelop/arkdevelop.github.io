@@ -1,7 +1,7 @@
 ---
 title: Top 10 Dockerfile Security Best Practices for a More Secure Container
 layout: post
-post-image: "/assets/images/dockerfile-security-best-practices.jpg"
+post-image: "/assets/img/blog/top-10-dockerfile-security-best-practices/post-image.jpg"
 description: A compilation of Dockerfile best practices and security guidance.
 category: Containers
 tags:
@@ -129,7 +129,7 @@ A linter is a tool which statically analyzes content to flag programming errors,
 
 *Hadolint example*
 
-![Hadolint example](/assets/images/hadolint_example.png "Hadolint linter"){:height="1920px" width="720px"}
+![Hadolint example](/assets/img/blog/top-10-dockerfile-security-best-practices/hadolint_example.png "Hadolint linter"){:height="320px" width="700px"}
 
 ### 1.6. Avoid Using Latest Tag
 As seen in section [1.4. Use a Linter](#14-use-a-linter), Hadolint recommends avoiding the use of the latest tag in Dockerfiles. Users should avoid using the latest tag due to the potential for breaking functionality or introducing unknowns into the environment in the future should the image update. Instead of using the latest tag, users should opt to specify an explicit release tag.
@@ -170,7 +170,7 @@ docker history node:14
 
 *Docker history of Node:14*
 
-![Docker history of Node:14](/assets/images/docker_history_node_14.png "Docker history of Node 14"){:height="1920px" width="720px"}
+![Docker history of Node:14](/assets/img/blog/top-10-dockerfile-security-best-practices/docker_history_node_14.png "Docker history of Node 14"){:height="320px" width="700px"}
 
 This becomes especially concerning when it comes to using secrets or credentials in a Dockerfile since any user with access to the image will be able to see the contents. To overcome the security concern, it is paramount that users never include secrets or credentials in their Dockerfile whether written in plaintext in the Dockerfile directly, passed in as a file, or passed in as a build argument.
 

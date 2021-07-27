@@ -1,60 +1,136 @@
-<footer id="footer">
-    <!--Footer Button-->
-    <div class="container has-text-centered has-background-grey-darker" id="backtotop">
-        <a class="has-text-white" onclick="window.scroll(0,0)">BACK TO TOP</a>
-    </div>
-    <!--Footer Main Section-->
-    <div class="has-background-grey-darker">
-        <div class="container columns">
-            <!--Name Section-->
-            <div class="column has-text-left-desktop has-text-centered-mobile">
-                <a href="{{site.url}}{{site.baseurl}}/#about">
-                    <div class="columns">
-                        <div class="column is-one-fifth-desktop is-one-fifth-fullhd is-one-quarter-tablet">
-                            <figure class="image is-64x64">
-                                <img class="is-rounded" src="{{site.author-image}}" alt="{{site.author-name}}">
-                            </figure>
-                        </div>
-                        <div class="column is-marginless">
-                            <h3 class="has-text-grey-lighter">{{site.author-name}}</h5>
+<footer class="footer-section">
+    <div class="container">
+        <div class="footer-cta pt-80 pb-20">
+            <div class="row">
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="fas fa-users"></i>
+                        <div class="cta-text">
+                            <h4>Follow us</h4>
+                            <a href="https://twitter.com/{{site.twitter_username}}"><i class="fab fa-twitter-square fa-fw"></i></a>
                         </div>
                     </div>
-                </a>
+                </div>
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="fas fa-donate"></i>
+                        <div class="cta-text">
+                            <h4>Support us</h4>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="far fa-envelope-open"></i>
+                        <div class="cta-text">
+                            <h4>Email</h4>
+                            <span>{{site.email}}</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!--Link Section-->
-            <div class="column has-text-white">
-                <h3>More Links</h3>
-                <ul>
-                    {% for sitepage in site.html_pages offset: 4 %}
-                    {% unless sitepage.url == '/'  limit: 2 %}
-                    <li>
-                        <a href="{{sitepage.url | absolute_url}}">{{sitepage.title}}</a>
-                    </li>
-                    {% endunless %}
-                    {% endfor %}
-                </ul>
-                <ul>
-                    <li>
-                        <a target="_blank" href="{{site.url}}{{site.baseurl}}/feed.xml">Subscribe via RSS</a>
-                    </li>
-                </ul>
+        </div>
+        <div class="footer-content pt-50 pb-30">
+            <div class="footer-pattern">
+                <img src="/assets/img/footer/footer_map.png" alt="map background">
             </div>
-
-            <!--Blog-post Section-->
-            <div class="column has-text-white">
-                <h3>Recent Posts</h3>
-                <ul>
-                    {% for post in site.posts offset: 0 limit:3 %}
-                    <li>
-                        <a href="{{post.url | absolute_url}}">{{post.title}}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 mb-50">
+                    <div class="footer-widget">
+                        <div class="footer-logo">
+                            <a href="/"><img src="/assets/img/footer/footer_logo.png" class="img-fluid" alt="{{site.title}}"></a>
+                        </div>
+                        <div class="footer-text">
+                            <p>{{ site.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                    <div class="footer-widget">
+                        <div class="footer-widget-heading">
+                            <h3>Useful Links</h3>
+                        </div>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/blog">Blog</a></li>
+                            <li><a href="/portfolio">Portfolio</a></li>
+                            <li><a href="/feed.xml">Subscribe via RSS</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                    <div class="footer-widget">
+                        <div class="footer-widget-heading">
+                            <h3>Subscribe</h3>
+                        </div>
+                        <div class="footer-text mb-25">
+                            <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                        </div>
+                        <div id="mc_embed_signup" class="subscribe-form">
+                            <form action="https://deepdivesecurity.us6.list-manage.com/subscribe/post?u=f83a4de85e30cb6f52e796494&amp;id=ea20fc1f3f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+                                <div id="mc_embed_signup_scroll">
+                                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required="">
+                                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_f83a4de85e30cb6f52e796494_ea20fc1f3f" tabindex="-1" value=""></div>
+                                <div class="clear"><button type="submit" name="subscribe" id="mc-embedded-subscribe" class="button"><i class="fab fa-telegram-plane"></i></button></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="has-background-black has-text-centered has-text-white" id="credits">
-        <i class="far fa-copyright"></i> DeepDiveSecurity {{ "now" | date: "%Y" }} | <a href="/sitemap.xml">Sitemap</a> | <a href="/terms-of-use">Terms of Use</a> | <a href="/privacy-policy">Privacy Policy</a> | Theme made by TheDevsLot
+    <div class="copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                    <div class="copyright-text">
+                        <p>Copyright © {{ "now" | date: "%Y" }}, All Rights Reserved <a href="/">{{site.title}}</a></p>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                    <div class="footer-menu">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/terms-of-use">Terms of Use</a></li>
+                            <li><a href="/privacy-policy">Privacy Policy</a></li>
+                            <li><a href="/sitemap.xml">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </footer>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="/assets/js/jquery-1.12.4.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/slick.min.js"></script>
+<script src="/assets/js/isotope.pkgd.min.js"></script>
+<script src="/assets/js/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/js/jquery.waypoints.min.js"></script>
+<script src="/assets/js/jquery.counterup.min.js"></script>
+<script src="/assets/js/owl.carousel.min.js"></script>
+<script src="/assets/js/jquery.meanmenu.min.js"></script>
+<script src="/assets/js/jquery.magnific-popup.min.js"></script>
+<script src="/assets/js/scrollup.min.js"></script>
+<script src="/assets/js/simple-jekyll-search.min.js"></script>
+<script src="/assets/js/main.js"></script>
+<script data-ad-client="ca-pub-8181498676181577" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{site.google-analytics}}"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', '{{site.google-analytics}}');
+</script>

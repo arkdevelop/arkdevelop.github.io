@@ -1,0 +1,23 @@
+<div class="col-lg-4 sidebar-blog right-side">
+    {% include sidebar-recent-posts.html %}
+    
+    <div class="widget">
+        <h4 class="widget-title">Sponsored</h4>
+        <div class="widget-banner">
+            <a href="#"><img src="/assets/img/blog/330x400.png" alt="advertisement" /></a>
+        </div>
+    </div>
+    <div class="widget">
+        <h4 class="widget-title">Categories</h4>
+        <div class="widget-link">
+            <ul class="sidebar-link">
+                {% for category in site.categories %}
+                    {% capture category_name %}{{ category | first }}{% endcapture %}
+                    <li>
+                        <a class="text-capitalize">{{ category_name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

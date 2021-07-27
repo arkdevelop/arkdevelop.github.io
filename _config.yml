@@ -1,4 +1,4 @@
-# WhatATheme
+# DeepDiveSecurity
 markdown: kramdown
 
 # URL of the Site
@@ -9,22 +9,23 @@ baseurl:
 # Title of the Site
 title: Deep Dive Security
 # Description of the Site
-description: Taking a deep dive into cybersecurity
+description: Taking a deep dive into cyber security
 # URL of Image of the Site
-site-image: /assets/images/meta.jpg
+site-image: /assets/img/meta.jpg
 # Keywords of the Site
 site-keywords: Security, Best-practices, Guidance, Docker, Kubernetes, Cloud, AWS, GCP, Azure, Architecture
 # URL for the Image of custom Favicon
-favicon-url: /assets/images/favicon.ico
+favicon-url: /assets/img/favicon.ico
 
 # URL of the Image of Custom Hero Image (i.e., the image in the background of the very first section of the Homepage)
-heroimage: /assets/images/main_background.jpeg
+heroimage: /assets/img/main_background.jpeg
 
 # Social Media and Contact
 # If you don't want to use any icon, you can leave them blank.
+address: Not yet set
 email: deepdivesec@outlook.com
 facebook_username: 
-twitter_username: 
+twitter_username: deepdivesec404
 instagram_username: 
 linkedin_username:
 github_username: arkdevelop
@@ -43,22 +44,24 @@ disqus-shortname: deepdivesecurity
 # Name of the Author
 author-name: DeepDiveSecurity
 # URL for the Image of the Author
-author-image: /assets/images/logo.png
+author-image: /assets/img/logo.png
 # 60 Words About the Author
-author-about: Deep Dive Security is comprised of multiple years of technical experience in a cloud security role with a proven track record in security assessments and authorization. Adept at researching, documenting, and communicating security best practice guidance, Deep Dive Security aims to improve project architectures to ensure a strong organization security posture. See the Blog page for security guidance and best practices.
+author-about: Deep Dive Security is comprised of multiple years of technical experience in a cloud security role with a proven track record in security assessments and authorization. Adept at researching, documenting, and communicating security best practice guidance, Deep Dive Security aims to improve project architectures to ensure a strong organization security posture.
 # URL to the Author's Profile (i.e., Github, Twitter, Stackoverflow, etc)
 author-url: https://github.com/arkdevelop
-
-# SASS
-sass:
-  sass_dir: _sass
-  style: compressed
+# Author years of experience
+author-experience: 2
 
 # Build settings
 plugins:
   - jekyll-admin
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-paginate
+
+# Blog pagination
+paginate: 5
+paginate_path: "/blog/page:num/"
 
 # Permalink
 permalink: "blog/:title"

@@ -4,36 +4,139 @@ layout: compress
 
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
 {% include head.html %}
+</head>
 
 <body>
-  {% include navbar.html %}
-  {% include showcase.html %}
-  {% include featured-posts.html %}
-  <!--Footer begins here-->
-  {% include footer.html %}
-</body>
-<!--<script>
-  window.addEventListener("scroll", function (event) {
-    var scroll = this.scrollY;
-    var item = document.getElementsByClassName('navbar-item');
-    /* console.log(scroll); */
-    if (scroll < 1130) {
-      item[1].classList.add('is-active');
-      item[2].classList.remove('is-active');
-      item[3].classList.remove('is-active');
-    }
-    if (scroll > 1130 && scroll < 1695) {
-      item[1].classList.remove('is-active');
-      item[2].classList.add('is-active');
-      item[3].classList.remove('is-active');
-    }
-    if (scroll > 1695) {
-      item[1].classList.remove('is-active');
-      item[2].classList.remove('is-active');
-      item[3].classList.add('is-active');
-    }
-  });
-</script>-->
+    {% include header.html %}
+    {% include search.html %}
+    
+ <!-- Main-start -->
+<main>
+    {% include slider.html %}
 
-</html>
+    {% include featured-posts.html %}
+    
+    <div class="counter-area pb-100 pt-100" data-overlay="7"
+        style="background-image:url(/assets/img/counterBg/bg1.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-md-3 col-sm-6 z-index">
+                    <div class="single-counter text-center mb-30">
+                        <span class="lnr lnr-users"></span>
+                        <div class="counter">{{ site.author-experience }}</div>
+                        <p>Years of Experience</p>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-3 col-sm-6 z-index">
+                    <div class="single-counter text-center mb-30">
+                        <span class="lnr lnr-code"></span>
+                        <div class="counter">{{ site.data.projects | size }}</div>
+                        <p>Projects</p>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-3 col-sm-6 z-index">
+                    <div class="single-counter text-center mb-30">
+                        <span class="lnr lnr-file-empty"></span>
+                        <div class="counter">{{ site.posts | size }}</div>
+                        <p>Blog Posts</p>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-3 col-sm-6 z-index">
+                    <div class="single-counter text-center mb-30">
+                        <span class="lnr lnr-thumbs-up"></span>
+                        <div class="counter">9999</div>
+                        <p>More to Go</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include featured-projects.html %}
+
+    <!--
+    <section class="cta-area" style="background-image:url(/assets/img/bg/cta1.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 text-center">
+                    <div class="call-to-action white-text">
+                        <h3>Developing first class solutions <br>
+                            for our clients.</h3>
+                        <div class="call-to-action">
+                            <a href="https://www.youtube.com/watch?v=vKSA_idPZkc" class="btn video-view">watch video</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include services.html %}
+
+    <section class="team-area grey-bg pt-100 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 text-center pb-40">
+                    <div class="section-title service-title">
+                        <h2>Our Team</h2>
+                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have
+                            suffered alteration in some form,words which don't look even slightly believable.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-6 mb-30">
+                    <div class="single-team text-center ">
+                        <div class="team-img">
+                            <img src="/assets/img/team/01.jpg" alt="">
+                        </div>
+                        <div class="team-info">
+                            <h3>Tanvir Raihan</h3>
+                            <span>Web Designer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 mb-30">
+                    <div class="single-team text-center ">
+                        <div class="team-img">
+                            <img src="/assets/img/team/02.jpg" alt="">
+                        </div>
+                        <div class="team-info">
+                            <h3>Jackson Nash</h3>
+                            <span>Massagist</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 mb-30">
+                    <div class="single-team text-center ">
+                        <div class="team-img">
+                            <img src="/assets/img/team/03.jpg" alt="">
+                        </div>
+                        <div class="team-info">
+                            <h3>Jon Doe</h3>
+                            <span>Web Develpoer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 mb-30">
+                    <div class="single-team text-center " data-wow-delay=".8s">
+                        <div class="team-img">
+                            <img src="/assets/img/team/04.jpg" alt="">
+                        </div>
+                        <div class="team-info">
+                            <h3>Jackson Nash</h3>
+                            <span>Massagist</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+</main>
+</body>
+
+{% include footer.html %}

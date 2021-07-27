@@ -6,148 +6,175 @@ layout: compress
 <html lang="en">
 
 <head>
-  {% include head.html %}
+{% include head.html %}
 </head>
 
 <body>
-  {% include navbar.html %}
-
-  <section class="hero is-fullheight has-text-centered" id="post">
-    <div class="hero-body">
-      <div class="container">
-        <a href="{{page.url | relative_url}}" class="has-text-black" id="title">
-          <h1 class="title has-text-centered is-2 has-text-weight-semibold ">{{page.title}}</h1>
-        </a>
-        <hr class="has-background-black">
-        <div class="columns is-variable is-5">
-          <div class="column is-6">
-            <figure class="image is-16by9 has-shadow">
-              <img src="{{page.post-image}}" alt="{{post.title}}" id="post-image">
-            </figure>
-          </div>
-          <div class="subtitle column is-5 has-text-left-desktop has-text-left-fullhd has-text-left-tablet has-text-center-mobile">
-            {% unless page.description.size == 0 %}
-            <p id="description" class="content is-small has-text-weight-medium is-uppercase">{{page.description | strip | strip_html | strip_newlines }}</p>
-            {% endunless %}
-            <p class="subtitle is-6 is-uppercase has-text-weight-normal has-text-black-ter">Published on
-              <b>{{ page.date | date: "%-B %d, %Y" }}</b> by <a href="{% if site.author-url %}{{site.author-url}}{% else %}{{site.url}}{{site.baseurl}}/#about{% endif %}" rel="noopener" target="_blank"><b class="has-text-link"><u>{{site.author-name}}</u></b>
-              </a>
-            </p>
-            {%- assign tags = page.tags -%}
-            {%- unless tags.size == 0 -%}
-            <p class="subtitle is-uppercase">
-              <i class="fas fa-tags"></i>
-              {% assign i = 0 %}
-              {% for tags in page.tags %}
-              <span class="tag is-link">{{page.tags[i]}}</span>
-              {% assign i = i | plus:1 %}
-              {% endfor %}
-            </p>
-            {%- endunless -%}
-            {% assign words = content | number_of_words %}
-            {%- unless content.size == 0 -%}
-            <p class="subtitle is-uppercase"><i class="fas fa-clock"></i> <b class="has-text-link">
-                {{ words | divided_by:180 }} min
-              </b>READ</p>
-            {%- endunless -%}
-          </div>
-        </div>
-        <div class="content has-text-justified-desktop has-text-justified-fullhd has-text-justified has-text-justified-tablet has-text-left-mobile">
-          <p>{{ content }}</p>
-          <!-- <div id="amzn-assoc-ad-34261dd0-f131-4758-a47f-7e5f1053a048"></div><script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=34261dd0-f131-4758-a47f-7e5f1053a048"></script> -->
-        </div>
-
-        <div class="columns is-centered is-multiline is-mobile">
-          {% assign showRelatedPosts = 3 %}
-
-          {% capture posts %} 
-          {% for post in site.posts %}
-            {% if post.url != page.url %}
-              {% assign matchingTags = "" | split: ","  %}
-    
-              {% for tag in post.tags %}
-                {% assign currentPostTag = tag | downcase %}
-                {% assign tagsPage = page.tags | downcase %}
-                {% if tagsPage contains currentPostTag %}
-                  {% assign matchingTags = matchingTags | push: currentPostTag %}    
-                {% endif %}
-              {% endfor %}
-            
-              {% assign tagsTotal = matchingTags.size %}
-    
-              {% if tagsTotal < 10 %}
-                {% assign tagsTotal = tagsTotal | prepend: "0" %}
-              {% else %}
-                {% assign tagsTotal = tagsTotal  %}
-              {% endif %}
-            
-            |
-            <!--<strong>{{ tagsTotal }} tags</strong>-->
-            <div class="column has-text-centered is-paddingless is-marginless is-one-third-widescreen is-one-third-desktop is-one-fifth-fullhd is-one-third-tablet is-two-fifths-mobile is-three-quarters-touch"
-            id="project-card">
-              <a href="{{ site.baseurl }}{{ post.url }}" target="_blank">
-              <div class="has-background-black card">
-                <img src="{{ post.post-image }}" 
-                    class="img-fluid" alt="{{ post.post-image }}" />
-                <div class="card-content">
-                  <h1 class="title has-text-white is-size-4">{{ post.title | truncate: 25}}</h1>
-                  <p class="has-text-white has-text-weight-light content">{{ post.description | truncate: 80}}</p>
+    {% include header.html %}
+    {% include search.html %}
+    <main>
+        <!-- Breadcrumb-area -->
+        <section class="breadcrumb-area grey-bg" style="background-image:url(/assets/img/bg/page-title.jpg)">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-8 col-md-6">
+                        <div class="breadcrumb-title sm-size">
+                            <h2>{{page.title}}</h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 text-left text-md-right">
+                        <div class="breadcrumb">
+                            <ul>
+                                {% include breadcrumbs.html %}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              </a>
             </div>
-          {% endif %}
-          {% endfor %}
-          {% endcapture %}
-        </div>
-      {% assign relatedPosts = posts | split: '|' | sort | reverse %}
-
-      {% if relatedPosts.size > 1 %}
-        <div class="content has-text-justified-desktop has-text-justified-fullhd has-text-justified has-text-justified-tablet has-text-left-mobile">
-          <hr>
-          <h2>You Might Also Like...</h2>
-        </div>
-        
-        <section class="hero" id="project">
-          <div class="hero-body">
-              <div class="container has-text-centered">
-                  {% for i in (0..showRelatedPosts) %}
-                    {{ relatedPosts[i] }}
-                  {% endfor %}
-              </div>
-          </div>
         </section>
-      {% endif %}
+        <!-- Blog-details-area -->
+        <div class="basic-blog-area gray-bg pt-100 pb-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 blog-post-items">
+                        <div class="blog-wrapper mb-60">
+                            <div class="blog-thumb">
+                                <img src="{{page.post-image}}" alt="{{post.title}}" />
+                            </div>
+                            {% assign words = content | number_of_words %}
+                            {%- unless content.size == 0 -%}
+                                <p class="subtitle is-uppercase"><i class="fas fa-clock"></i> <b class="has-text-link">
+                                {{ words | divided_by:180 }} min
+                                </b>Read</p>
+                            {%- endunless -%}
+                            <div class="blog-content">
+                                {{ content }}
+        
+                                <div class="row mt-30">
+                                    <div class="col-xl-6 col-lg-6 col-md-6">
+                                            <div class="blog-post-tag">
+                                                {% for tag in page.tags %}
+                                                <a rel="tag">{{ tag }}</a>
+                                                {% endfor %}
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
 
-        {% unless site.disqus-shortname == "" %}
-        <div class="content has-text-justified-desktop has-text-justified-fullhd has-text-justified has-text-justified-tablet has-text-left-mobile">
-          <hr>
-          <h2>Comments</h2>
+                            <hr>
+
+                            {% assign showRelatedPosts = 3 %}
+                      
+                            {% capture posts %} 
+                                {% for post in site.posts %}
+                                    {% if post.url != page.url %}
+                                        {% assign matchingTags = "" | split: ","  %}
+                          
+                                        {% for tag in post.tags %}
+                                            {% assign currentPostTag = tag | downcase %}
+                                            {% assign tagsPage = page.tags | downcase %}
+                                            {% if tagsPage contains currentPostTag %}
+                                                {% assign matchingTags = matchingTags | push: currentPostTag %}    
+                                            {% endif %}
+                                        {% endfor %}
+                                  
+                                        {% assign tagsTotal = matchingTags.size %}
+                          
+                                        {% if tagsTotal < 10 %}
+                                            {% assign tagsTotal = tagsTotal | prepend: "0" %}
+                                        {% else %}
+                                            {% assign tagsTotal = tagsTotal  %}
+                                        {% endif %}
+                                        |
+                                        <!--<strong>{{ tagsTotal }} tags</strong>-->
+                                        <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                                            <div class="blog-wrapper home-blog-wrapper white-bg">
+                                                <div class="blog-thumb">
+                                                    <a href="{{ site.baseurl }}{{ post.url }}">
+                                                        <img src="{{ post.post-image }}" alt="{{ post.title }}" />
+                                                    </a>
+                                                </div>
+                                                <div class="meta-info">
+                                                    <ul>
+                                                        <li class="posts-time">{{ post.date | date: '%B %d, %Y' }}</li>
+                                                        <li>
+                                                            {% assign words = post.content | number_of_words %}
+                                                            {%- unless content.size == 0 -%}
+                                                                <i class="fas fa-clock"></i> <b class="has-text-link">
+                                                                {{ words | divided_by:180 }} min
+                                                                </b>Read
+                                                            {%- endunless -%}
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="blog-content home-blog">
+                                                    <h2 class="blog-title">
+                                                        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title | truncate:25 }}</a>
+                                                    </h2>
+                                                    <p></p>
+                                                </div>
+                                                <div class="link-box home-blog-link">
+                                                    <a href="{{ site.baseurl }}{{ post.url }}">Read More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endcapture %}
+
+                            {% assign relatedPosts = posts | split: '|' | sort | reverse %}
+
+                            {% if relatedPosts.size > 1 %}
+                                <!-- Recommended posts -->
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xl-12 text-center pb-40">
+                                            <div class="section-title service-title">
+                                                <h3>You Might Also Like...</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        {% for i in (0..showRelatedPosts) %}
+                                            {{ relatedPosts[i] }}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <hr>
+                            {% endif %}
+
+                            {% unless site.disqus-shortname == "" %}
+                            <div class="post-comments mt-50">
+                                <div class="latest-comments">
+                                    <div id="disqus_thread"></div>
+                                    <script>
+                                        /**
+                                         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                                         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                                        /*
+                                        var disqus_config = function () {
+                                        this.page.url = PAGE_URL;  Replace PAGE_URL with your page's canonical URL variable
+                                        this.page.identifier = PAGE_IDENTIFIER; Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                        };
+                                        */
+                                        (function () { /* DON'T EDIT BELOW THIS LINE */
+                                          var d = document,
+                                            s = d.createElement('script');
+                                          s.src = 'https://{{site.disqus-shortname}}.disqus.com/embed.js';
+                                          s.setAttribute('data-timestamp', +new Date());
+                                          (d.head || d.body).appendChild(s);
+                                        })();
+                                      </script>
+                                </div>
+                                {% endunless %}
+                            </div>
+                        </div>
+                    </div>
+                    {% include blog-sidebar.html %}
+                </div>
+            </div>
         </div>
-        <div class="disqus-comments" id="disqus_thread"></div>
-        {% endunless %}
-      </div>
-    </div>
-  </section>
-  {% include footer.html %}
+    </main>
 </body>
-<script>
-  /**
-   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-  /*
-  var disqus_config = function () {
-  this.page.url = PAGE_URL;  Replace PAGE_URL with your page's canonical URL variable
-  this.page.identifier = PAGE_IDENTIFIER; Replace PAGE_IDENTIFIER with your page's unique identifier variable
-  };
-  */
-  (function () { /* DON'T EDIT BELOW THIS LINE */
-    var d = document,
-      s = d.createElement('script');
-    s.src = 'https://{{site.disqus-shortname}}.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
 
-</html>
+{% include footer.html %}
