@@ -1925,3 +1925,7 @@ blockquote {
 .features-icon img {
 	max-width: 60px;
 }
+
+iframe[sandbox]:not([sandbox=""]) {
+    display: none !important;
+}
