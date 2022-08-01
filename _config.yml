@@ -47,7 +47,7 @@ author-about: Deep Dive Security is comprised of multiple years of technical exp
 # URL to the Author's Profile (i.e., Github, Twitter, Stackoverflow, etc)
 author-url: https://github.com/arkdevelop
 # Author years of experience
-author-experience: 2
+author-experience: 3
 
 # Build settings
 plugins:
