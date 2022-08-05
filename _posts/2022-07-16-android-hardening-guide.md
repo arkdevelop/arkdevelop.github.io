@@ -71,7 +71,7 @@ On the topic of email clients, they generally connect via Simple Mail Transport 
 
 *Email encryption and decryption process using PGP*
 
-![Email encryption and decryption process using PGP](/assets/img/blog/android_hardening_guide/email_encryption_and_decryption.png "Email encryption and decryption process using PGP"){:height="250px" width="600px"}
+![Email encryption and decryption process using PGP](/assets/img/blog/android_hardening_guide/email_encryption_and_decryption.png "Email encryption and decryption process using PGP"){:height="100%" width="100%"}
 
 Note. Email encryption and decryption process using PGP. From *What is PGP encryption and how does it work?* by Proton, 2019, August 8. (<https://proton.me/blog/what-is-pgp-encryption>).
 
@@ -98,14 +98,14 @@ See Figure 2 below for a visual representation of where encryption resides in a 
 
 *VPN Architecture*
 
-![VPN Architecture](/assets/img/blog/android_hardening_guide/vpn_architecture.png "VPN Architecture"){:height="250px" width="700px"}
+![VPN Architecture](/assets/img/blog/android_hardening_guide/vpn_architecture.png "VPN Architecture"){:height="100%" width="100%"}
 
 Note. VPN technical explanation. From *What is a VPN? Virtual Private Networks 101* by Surfshark, n.d. (<https://surfshark.com/learn/what-is-vpn>).
 
 ## 5. Other Apps & Protections
 At this point we've discussed baseline benchmark security, messaging and email standards, and network-based protections like VPNs. To take it a step further, we'll now look at a defence-in-depth approach by assuming compromise of the device has already taken place. What can you do to protect your data and apps from malicious attackers who have already bypassed your main Android lock screen?
 
-For Samsung device users, the answer is a simple one, Samsung Secure Folder protected by Knox. Samsung Secure Folder utilizes Samsung Knox Workspace dual persona container technology to "separate, isolate, encrypt, and protect data" (Samsung, 2016). Samsung Secure Folder allows users to store files (including images) in a separate, password protected, location. Similarly, Samsung Secure Folder offers users the ability to import, and password protect specific apps away from their every day apps. An example use case could be for a user who utilizes an app which maintains a logged-in status. For this example, we'll say it's the social media application, SnapChat. Therefore, compromise of the main Android lock screen or if the user forgot their device was unlocked and went to the bathroom could also result in a compromise of the user's SnapChat account which could lead to impersonation attacks, data loss, or further compromise. However, if the user followed a defence-in-depth approach by utilizing Samsung Secure Folder and password protecting their SnapChat app, the malicious actor would need to also bypass that protection mechanism. User's can take advantage of Samsung's Secure Folder through the [Secure Folder app](https://play.google.com/store/apps/details?id=com.samsung.knox.securefolder) on the Play Store.
+For Samsung device users, the answer is a simple one, Samsung Secure Folder protected by Knox. Samsung Secure Folder utilizes Samsung Knox Workspace dual persona container technology to "separate, isolate, encrypt, and protect data" (Samsung, 2016). Samsung Secure Folder allows users to store files (including images) in a separate, password protected, location. Similarly, Samsung Secure Folder offers users the ability to import, and password protect specific apps away from their every day apps. An example use case could be for a user who utilizes an app which maintains a logged-in session. For this example, we'll say it's the social media application, SnapChat. Therefore, compromise of the main Android lock screen or if the user simply forgets their device is unlocked and goes to the bathroom could result in a compromise of the user's SnapChat account. This could lead to impersonation attacks, data loss, or further compromise. However, if the user followed a defence-in-depth approach by utilizing Samsung Secure Folder and password protected their SnapChat app, the malicious actor would need to bypass the second layer of security to achieve anything. User's can take advantage of Samsung's Secure Folder through the [Secure Folder app](https://play.google.com/store/apps/details?id=com.samsung.knox.securefolder) on the Play Store.
 
 While Samsung Secure Folder is one way to add a defence-in-depth approach to your Android device, there are several apps through the Play Store which claim to offer the same functionality. It is important, if opting to go this route, to review the app's claims and documentation to confirm they are secure for use.
 
