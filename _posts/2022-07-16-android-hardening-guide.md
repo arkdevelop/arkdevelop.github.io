@@ -1,7 +1,7 @@
 ---
 title: Android Hardening Guide
 layout: post
-post-image: "/assets/img/blog/android_hardening_guide/post-image.jpg"
+post-image: "/assets/img/blog/android_hardening_guide/post-image.webp"
 description: Follow this guide to become a pro in securing your Android device.
 category: Android Security
 tags:
@@ -71,7 +71,7 @@ On the topic of email clients, they generally connect via Simple Mail Transport 
 
 *Email encryption and decryption process using PGP*
 
-![Email encryption and decryption process using PGP](/assets/img/blog/android_hardening_guide/email_encryption_and_decryption.png "Email encryption and decryption process using PGP"){:height="100%" width="100%"}
+![Email encryption and decryption process using PGP](/assets/img/blog/android_hardening_guide/email_encryption_and_decryption.webp "Email encryption and decryption process using PGP"){:height="100%" width="100%"}
 
 Note. Email encryption and decryption process using PGP. From *What is PGP encryption and how does it work?* by Proton, 2019, August 8. (<https://proton.me/blog/what-is-pgp-encryption>).
 
@@ -98,7 +98,7 @@ See Figure 2 below for a visual representation of where encryption resides in a 
 
 *VPN Architecture*
 
-![VPN Architecture](/assets/img/blog/android_hardening_guide/vpn_architecture.png "VPN Architecture"){:height="100%" width="100%"}
+![VPN Architecture](/assets/img/blog/android_hardening_guide/vpn_architecture.webp "VPN Architecture"){:height="100%" width="100%"}
 
 Note. VPN technical explanation. From *What is a VPN? Virtual Private Networks 101* by Surfshark, n.d. (<https://surfshark.com/learn/what-is-vpn>).
 
