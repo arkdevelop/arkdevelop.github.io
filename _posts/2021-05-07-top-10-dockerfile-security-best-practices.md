@@ -17,38 +17,28 @@ In this post, we'll walk through what a Dockerfile is and how to create one foll
 ---
 
 ## Table of Contents
-- [1. Guidance](#1-guidance)
-
-    - [1.1. Use USER Instruction](#11-use-user-instruction)
-
-    - [1.2. Use Minimal Base Image](#12-use-minimal-base-image)
-
-    - [1.3. Use Minimal Ports](#13-use-minimal-ports)
-
-    - [1.4. Use Trusted and Secure Base Images](#14-use-trusted-and-secure-base-images)
-
-        - [1.4.1. Check for Vulnerabilities](#141-check-for-vulnerabilities)
-
-        - [1.4.2. Use Signed Images](#142-use-signed-images)
-
-    - [1.5. Use a Linter](#15-use-a-linter)
-
-    - [1.6. Avoid Using Latest Tag](#16-avoid-using-latest-tag)
-
-    - [1.7. Group RUN, COPY, and ADD Instructions](#17-group-run-copy-and-add-instructions)
-
-    - [1.8. Multi-stage Building](#18-multi-stage-building)
-
-    - [1.9. Avoid Including Secrets or Credentials](#19-avoid-including-secrets-or-credentials)
-
-    - [1.10. Use .dockerignore](#110-use-dockerignore)
-
+- [1. What is a Dockerfile?](#1-what-is-a-dockerfile)
+- [2. Use USER Instruction](#2-use-user-instruction)
+- [3. Use Minimal Dockerfile Base Image](#3-use-minimal-dockerfile-base-image)
+- [4. Use Minimal Ports](#4-use-minimal-ports)
+- [5. Use Trusted and Secure Base Images](#5-use-trusted-and-secure-base-images)
+  - [5.1. Check for Vulnerabilities](#51-check-for-vulnerabilities)
+  - [5.2. Use Signed Images](#52-use-signed-images)
+- [6. Use a Linter](#6-use-a-linter)
+- [7. Avoid Using Latest Tag](#7-avoid-using-latest-tag)
+- [8. Group RUN, COPY, and ADD Instructions](#8-group-run-copy-and-add-instructions)
+- [9. Multi-stage Building](#9-multi-stage-building)
+- [10. Avoid Including Secrets or Credentials](#10-avoid-including-secrets-or-credentials)
+- [11. Use .dockerignore](#11-use-dockerignore)
+- [12. Conclusion](#12-conclusion)
 - [References](#references)
 
 ---
 
-## 1. Guidance
-### 1.1. Use USER Instruction
+## 1. What is a Dockerfile?
+A dockerfile in the most lament of terms is a text file containing the necessary commands that would be used to build a Docker image. If you’re unfamiliar with what a Docker image is, I highly recommend starting off your container journey with some of Docker’s documentation. With that said, what does a dockerfile do? Well, a dockerfile allows users to automate the build process of their container images in a repeatable, consistent, manner without having to walk through each command manually which is a big bonus. So now that you know what a dockerfile is, the following sections will walk you through the security best practices of writing one.
+
+## 2. Use USER Instruction
 To ensure containers are not run as root, the USER instruction should be used whenever possible. Avoiding the use of root will assist in preventing host privilege escalation attacks which could be detrimental to the security of the system. To aid users with this task, some images include a built-in user. For example, Node.js includes their node user as seen below.
 
 ```dockerfile
@@ -64,21 +54,21 @@ RUN userdel -r node
 RUN deluser --remove-home node
 ```
 
-### 1.2. Use Minimal Dockerfile Base Image
+## 3. Use Minimal Dockerfile Base Image
 Images should be minimal and only include the necessary packages to successfully run the application. In doing so, the attack surface will be significantly reduced through removing unnecessary and potentially vulnerable packages.
 Aiding developers in this effort, multiple sources have developed base images that only include the core necessities. [Distroless](https://github.com/GoogleContainerTools/distroless) and [Alpine](https://hub.docker.com/_/alpine) are two of the most common and recommended base images to use for creating minimal containers.
 
-### 1.3. Use Minimal Ports
+## 4. Use Minimal Ports
 In addition to using minimal images, only necessary ports should be exposed. Use of the EXPOSE instruction will assist in outlining for users which ports are intended to be published. However, it is important to note that the EXPOSE instruction is purely for comment and/or documentation purposes. Therefore, it will not prevent exposure of additional ports at runtime.
 
 ```dockerfile
 EXPOSE 80/tcp
 ```
 
-### 1.4. Use Trusted and Secure Base Images
+## 5. Use Trusted and Secure Base Images
 Docker images should come from a trusted source, be signed, and be vulnerability scanned to achieve an appropriate level of risk mitigation. While there are a number of tools available to obtain such results, Docker comes prepackaged with the docker scan command thus offering a quick and easy way for users to scan images.
 
-#### 1.4.1. Check for Vulnerabilities
+### 5.1. Check for Vulnerabilities
 ```powershell
 PS user> docker scan node:14
 \ Analyzing container dependencies for node:14
@@ -94,7 +84,7 @@ Platform:          linux/amd64
 Tested 413 dependencies for known vulnerabilities, found 548 vulnerabilities.
 ```
 
-#### 1.4.2. Use Signed Images
+### 5.2. Use Signed Images
 Docker images should be signed from a trusted source before use. One way to ensure only signed images are used is to enforce Docker Content Trust. On the client, it can be enforced on a per session basis through using the following command.
 ```bash
 $ export DOCKER_CONTENT_TRUST=1
@@ -122,7 +112,7 @@ Administrative keys for node:14
   Root Key:     be46625d7c6a0afe24bbbce6a92114d691e32ae921cf14f3feb2f970e7a77337
 ```
 
-### 1.5. Use a Linter
+## 6. Use a Linter
 A linter is a tool which statically analyzes content to flag programming errors, bugs, style errors, and more to assist in preventing undesirable outcomes. [Hadolint](https://github.com/hadolint/hadolint) is a commonly recommended Dockerfile linter which can aid in ensuring the user's Dockerfile follows best-practices, like confirming the user has explicitly tagged a version for their base image. It is therefore recommended that a linter is used while writing a Dockerfile whenever possible.
 
 **Figure 1**
@@ -131,17 +121,17 @@ A linter is a tool which statically analyzes content to flag programming errors,
 
 ![Hadolint example](/assets/img/blog/top-10-dockerfile-security-best-practices/hadolint_example.png "Hadolint linter"){:height="320px" width="700px"}
 
-### 1.6. Avoid Using Latest Tag
+## 7. Avoid Using Latest Tag
 As seen in section [1.4. Use a Linter](#14-use-a-linter), Hadolint recommends avoiding the use of the latest tag in Dockerfiles. Users should avoid using the latest tag due to the potential for breaking functionality or introducing unknowns into the environment in the future should the image update. Instead of using the latest tag, users should opt to specify an explicit release tag.
 
 ```dockerfile
 FROM node:14
 ```
 
-### 1.7. Group RUN, COPY, and ADD Instructions
+## 8. Group RUN, COPY, and ADD Instructions
 RUN, COPY, and ADD instructions in Dockerfiles each create a new layer when invoked. It is therefore a best practice to group these instructions onto a single line whenever possible to reduce the number of container layers.
 
-### 1.8. Multi-stage Building
+## 9. Multi-stage Building
 Multi-stage building in Dockerfiles offers a way to make intermediate builds, otherwise known as stages. Stages allow users to copy the resulting build from a previous stage and use it in a subsequent stage. Use of multi-stage building will reduce the attack surface and potential vulnerabilities of a build by limiting the packages found in the final image.
 
 For example, a user may want to have a stage which utilizes build tools, but have no requirements for those build tools in the final image. Through multi-stage building, they would start a stage with the FROM "base_image" as "name_of_stage1" instruction, then copy the result from that stage in their next FROM stage using the COPY --from="name_of_stage1" instruction. See the following Dockerfile for an example using Node:10 as the build environment followed by Google's Distroless Node:10 for the final image.
@@ -159,7 +149,7 @@ WORKDIR /app
 CMD ["app.js"]
 ```
 
-### 1.9. Avoid Including Secrets or Credentials
+## 10. Avoid Including Secrets or Credentials
 Docker uses layer caching which essentially means that all of the layers are still present in the final image. Certain commands like docker history will show the layers present in an image and how they were built. See Figure 2 below for an example using Node:14. 
 
 ```powershell
@@ -188,7 +178,7 @@ During the build, the secret would be passed in through the --secret flag.
 docker build --no-cache --progress=plain --secret id=secret,src=secret.txt .
 ```
 
-### 1.10. Use .dockerignore
+## 11. Use .dockerignore
 A .dockerignore file is similar to a .gitignore by which developers can specify files or directories to exclude from the build context, therefore preventing it from being included in the final image. .dockerignore files are particularly useful for explicitly excluding sensitive files and directories like credential files, backups, logs, and more. The below example ensures that a .git folder, a logs folder, and all files ending with the .md extension except for the README.md file are excluded from the build context. See [Docker's .dockerignore documentation](https://docs.docker.com/engine/reference/builder/#dockerignore-file) for further information.
 
 ```dockerignore
@@ -197,6 +187,9 @@ logs
 *.md
 !README.md
 ```
+
+## 12. Conclusion
+In conclusion, a Dockerfile is a great tool for building repeatable and consistent container images when done so securely. Avoiding the latest tag, checking for vulnerabilities and mitigating any that arise, using only signed images to avoid potential supply chain concerns, and the rest of the outlined best practices will guarantee that your development gets off on the right security foot to prevent any future headaches.
 
 ## References
 Center for Internet Security. (n.d.). *CIS Docker Benchmarks*. <https://www.cisecurity.org/benchmark/docker/>.
