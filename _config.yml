@@ -43,7 +43,7 @@ author-name: DeepDiveSecurity
 # URL for the Image of the Author
 author-image: /assets/img/logo.png
 # 60 Words About the Author
-author-about: Deep Dive Security is comprised of multiple years of technical experience in a cloud security role with a proven track record in security assessments and authorization. Adept at researching, documenting, and communicating security best practice guidance, Deep Dive Security aims to improve project architectures to ensure a strong organization security posture.
+author-about: Deep Dive Security has over 3 years of experience in a cloud security role with a proven track record in security assessments and authorization, cloud security, and DevSecOps. We are adept at researching, documenting, and promoting security best practices in addition to being proficient in conducting thorough security assessments, threat modelling, and reviews of services and project architectures using industry standards like NIST, CSA, Mitre, OWASP, and IETF standards. Through this, Deep Dive Security is able to devise a strong organization-wide security posture.
 # URL to the Author's Profile (i.e., Github, Twitter, Stackoverflow, etc)
 author-url: https://github.com/arkdevelop
 # Author years of experience
