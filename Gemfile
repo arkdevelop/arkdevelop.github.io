@@ -1,4 +1,4 @@
-source "http://rubygems.org"
+source "https://rubygems.org"
 # Hello! This is where you manage which Jekyll version is used to run.
 # When you want to use a different version, change it below, save the
 # file and run `bundle install`. Run Jekyll with `bundle exec`, like so:
@@ -31,3 +31,5 @@ end
 
 # Performance-booster for watching directories on Windows
 gem "wdm", :install_if => Gem.win_platform?
+
+gem "webrick", "~> 1.7"
