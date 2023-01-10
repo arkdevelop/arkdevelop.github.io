@@ -1,2 +1,2 @@
 # DeepDiveSecurity_Website
-![CodeQL](https://github.com/arkdevelop/arkdevelop.github.io/actions/workflows/github-code-scanning/codeql/badge.svg?event=push)
+![CodeQL](https://github.com/arkdevelop/arkdevelop.github.io/actions/workflows/github-code-scanning/codeql/badge.svg)
