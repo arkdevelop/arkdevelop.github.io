@@ -44,22 +44,22 @@ In this post, we will explore the best practices and industry standards for prot
 ## 1. Supply Chain Threats
 The first step in protecting a software supply chain is to understand the different types of threats that organizations are facing against it. NIST’s Cybersecurity Framework (CSF) identifies the following types of software supply chain threats:
 
-<ul>
+<ol>
     <li>Tampering: This type of threat involves unauthorized changes to software or its associated data. Examples include the insertion of malware into software, or the modification of software to bypass security controls.</li>
     <li>Counterfeit software: This type of threat involves the distribution of fraudulent software or software that has been tampered with in some way. Examples include software that has been cracked or pirated, or software that has been bundled with malware.</li>
     <li>Vulnerabilities in third-party components: This type of threat involves vulnerabilities in software components that are developed and maintained by third parties. Examples include open-source software libraries, frameworks, and other components that are widely used by many organizations.</li>
-</ul>
+</ol>
 
 Like NIST, Mitre also has a Supply Chain Compromise identification and available mitigations including the following tactics:
 
-<ul>
+<ol>
     <li><a href="https://attack.mitre.org/techniques/T1195/" target="_blank">T1195: Supply Chain Compromise</a></li>
-    <ul>
+    <ol>
         <li>T1195.001: Compromise Software Dependencies and Development Tools</li>
         <li>T1195.002: Compromise Software Supply Chain</li>
         <li>T1195.003: Compromise Hardware Supply Chain</li>
-    </ul>
-</ul>
+    </ol>
+</ol>
 
 Note that this is not an exhaustive list, and organizations should stay up to date on emerging threats and technologies that could introduce additional attack vectors.
 
